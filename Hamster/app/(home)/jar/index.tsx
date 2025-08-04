@@ -27,24 +27,6 @@ export default function JarScreen() {
     const [theOn, setOn] = useState(false)
     const [trans, setTrans] = useState<theTransaction | null>(null)
 
-    const thetrans = () => {
-        transMutation.mutate(
-            user?.id,
-            {
-                onSuccess: (data) => {
-                    console.log(data);
-                    if (!data) {
-                        console.log('no data');
-                    }
-                    setTrans(data)
-                },
-                onError: (error) => {
-                    console.log(error);
-                }
-            }
-        )
-    }
-
     useEffect(() => {
         console.log(user?.id);
         
