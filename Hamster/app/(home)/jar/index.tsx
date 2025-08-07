@@ -15,7 +15,7 @@ import { showSuccessAlert } from "@/utils/alert";
 import { router, useLocalSearchParams } from "expo-router";
 import { Eye, EyeOff, ListFilter, Minus, Plus } from "lucide-react-native";
 import { useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, ImageBackground, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function JarScreen() {
@@ -66,28 +66,34 @@ export default function JarScreen() {
             <VStack className="flex-1 max-w-full min-h-full">
                 <Text className="text-2xl font-mali_semibold text-getStarted mt-2 p-4">My Jar</Text>
 
-                <VStack className="p-4">
-                    <Card>
-                        <VStack className="items-center bg-globColour">
-                            <Text
-                            className="text-lg text-white font-mail">
-                                HamStash Jar</Text>
-                            <HStack className="items-center">
-                                {!theOn 
-                                ? (<Text className="text-2xl text-black font-mail">
-                                    ₦ ****.**
-                                </Text>)
-                                :(<Text className="text-2xl text-black font-mail">
-                                    ₦{theData?.currentAmount?.toFixed(2)}
-                                </Text>)}
-                                <Pressable onPress={() => setOn(!theOn)} className="ml-2">
-                                    {theOn ? (<Icon as={EyeOff} className="stroke-black h-5 w-5"/>) :(<Icon as={Eye} className="stroke-black h-5 w-5"/>)}
-                                </Pressable>
-                            </HStack>
-                        </VStack>
+                <VStack className="m-4">
+                    <Card className="">
+                        <ImageBackground 
+                        source={require('@/assets/images/balanceBG.png')}
+                        className="w-full h-40 items-center justify-center"
+                        resizeMode="stretch">
+                            <VStack space="md" className="items-center ">
+                                <Text
+                                className="text-lg text-white font-mali_semibold mt-5">
+                                    HamStash Jar</Text>
+                                <HStack className="items-center">
+                                    {!theOn 
+                                    ? (<Text className="text-2xl text-white font-mali_bold">
+                                        ₦ ****.**
+                                    </Text>)
+                                    :(<Text className="text-2xl text-white font-mali_bold">
+                                        ₦{theData?.currentAmount?.toFixed(2)}
+                                    </Text>)}
+                                    <Pressable onPress={() => setOn(!theOn)} className="ml-3">
+                                        {theOn ? (<Icon as={EyeOff} className="stroke-white h-5 w-5"/>) :(<Icon as={Eye} className="stroke-white h-5 w-5"/>)}
+                                    </Pressable>
+                                </HStack>
+                            </VStack>
+                        </ImageBackground>
+                        
                     </Card>
 
-                    <HStack className="justify-evenly mt-6">
+                    <HStack className="justify-evenly mt-3">
                         <Button 
                         size="lg" 
                         variant="outline" 
@@ -114,7 +120,7 @@ export default function JarScreen() {
                     </HStack>
                 </VStack>
 
-                <HStack className="justify-between items-center mt-14 p-4">
+                <HStack className="justify-between items-center  p-4">
                     <Text className="text-lg font-mali_semibold text-getStarted">
                         Transactions
                     </Text>
@@ -126,8 +132,8 @@ export default function JarScreen() {
                 data={trans || []}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({item}) => <TransCom trans={item}/>}
-                className="mx-4 mt-4"
-                ListEmptyComponent={<Text className="text-center mt-4">No transactions</Text>}
+                className="mx-4 mt-1"
+                ListEmptyComponent={<Text className="text-center mt-1">No transactions</Text>}
                 />
 
                 

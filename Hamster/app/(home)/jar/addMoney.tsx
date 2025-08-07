@@ -80,7 +80,7 @@ export default function AddMoney() {
                         onPress={() => {
                             console.log(initialAmount);
                             router.push({
-                            pathname: '/jar/addMoneyCategory',
+                            pathname: '/(home)/jar/addMoneyCategory',
                             params: {
                                 amount: theValue,
                                 initialAmount: initialAmount

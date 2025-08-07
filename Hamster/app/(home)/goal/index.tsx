@@ -11,6 +11,7 @@ import { useUserStore } from "@/store/userStore";
 import { router } from "expo-router";
 import { Eye, EyeOff } from "lucide-react-native";
 import { useEffect, useState } from "react";
+import { ImageBackground } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function GoalLayout() {
@@ -37,34 +38,39 @@ export default function GoalLayout() {
 
     return(
         <SafeAreaView className="flex-1 bg-white">
-            <VStack className="flex-1 p-4 max-w-full min-h-full">
-                <Text className="text-2xl font-mali_semibold text-getStarted mt-2 p-4">My Goals</Text>
-
-                <VStack className="p-4 items-center">
-                    <Card>
-                        <VStack className="items-center bg-globColour">
+            <VStack className="flex-1 m-4 max-w-full min-h-full">
+                <Text className="text-2xl font-mali_semibold text-getStarted mt-2 ml-2">My Goals</Text>
+                <Card className="">
+                    <ImageBackground 
+                    source={require('@/assets/images/balanceBG.png')}
+                    className="w-full h-40  items-center justify-center"
+                    resizeMode="stretch">
+                        <VStack space="md" className="items-center ">
                             <Text
-                            className="text-lg text-white font-mail">
-                                HamStash Jar</Text>
+                            className="text-lg text-white font-mali_semibold mt-5">
+                                HamStash Balance</Text>
                             <HStack className="items-center">
                                 {!theOn 
-                                ? (<Text className="text-2xl text-black font-mail">
+                                ? (<Text className="text-2xl text-white font-mali_bold">
                                     ₦ ****.**
                                 </Text>)
-                                :(<Text className="text-2xl text-black font-mail">
+                                :(<Text className="text-2xl text-white font-mali_bold">
                                     ₦{theData?.currentAmount?.toFixed(2)}
                                 </Text>)}
-                                <Pressable onPress={() => setOn(!theOn)} className="ml-2">
-                                    {theOn ? (<Icon as={EyeOff} className="stroke-black h-5 w-5"/>) :(<Icon as={Eye} className="stroke-black h-5 w-5"/>)}
+                                <Pressable onPress={() => setOn(!theOn)} className="ml-3">
+                                    {theOn ? (<Icon as={EyeOff} className="stroke-white h-5 w-5"/>) :(<Icon as={Eye} className="stroke-white h-5 w-5"/>)}
                                 </Pressable>
                             </HStack>
                         </VStack>
-                    </Card>
+                    </ImageBackground>
+                                    
+                                </Card>
 
+                <VStack className="p-4 items-center">
                     <Button 
                         size="lg" 
                         variant="outline" 
-                        className="p-2.5 border-jarAdd rounded-lg mt-6"
+                        className="px-6 border-globColour rounded-lg mt-3"
                         onPress={() => router.push({pathname:'/(home)/goal/goalItem',
                             params: {
                                 currentAmount: theData?.currentAmount?.toFixed(2)

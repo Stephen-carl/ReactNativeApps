@@ -12,6 +12,12 @@
     "preview": {
       "distribution": "internal"
     },
+    "preview2": {
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      }
+    },
     "production": {
       "autoIncrement": true
     }

@@ -3,17 +3,40 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { HStack } from "@/components/ui/hstack";
+import { Icon } from "@/components/ui/icon";
 import { Image } from "@/components/ui/image";
 import { Pressable } from "@/components/ui/pressable";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
+import { useGetJar } from "@/hooks/jarHook";
+import { theJar } from "@/interface/jar";
 import { useUserStore } from "@/store/userStore";
 import { router, useLocalSearchParams } from "expo-router";
-import { Bell, Icon, View } from "lucide-react-native";
+import { Bell, Eye, EyeOff, View } from "lucide-react-native";
+import { useEffect, useState } from "react";
+import { ImageBackground } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeLayout() {
     const {user} = useUserStore()
+    const jarMutation = useGetJar()
+    const [theOn, setOn] = useState(false)
+    const [theData, setTheData ] = useState<theJar | null>(null)
+
+    useEffect(() => {
+        jarMutation.mutate(
+            user?.id,
+            {
+                onSuccess: (data) => {
+                    console.log(data);
+                    setTheData(data)
+                },
+                onError: (error) => {
+                    console.log(error);
+                }
+            }
+        )
+    },[user?.id])
 
     // map the profiles to their respective images
     const profileImages : string | any = {
@@ -50,7 +73,33 @@ export default function HomeLayout() {
                     
                 </HStack>
 
-                <VStack className="mx-4 p-4 border border-jarHeadBorder rounded-xl items-center ">
+                <Card className="">
+                    <ImageBackground 
+                    source={require('@/assets/images/balanceBG.png')}
+                    className="w-full h-40  items-center justify-center"
+                    resizeMode="stretch">
+                        <VStack space="md" className="items-center ">
+                            <Text
+                            className="text-lg text-white font-mali_semibold mt-5">
+                                HamStash Balance</Text>
+                            <HStack className="items-center">
+                                {!theOn 
+                                ? (<Text className="text-2xl text-white font-mali_bold">
+                                    ₦ ****.**
+                                </Text>)
+                                :(<Text className="text-2xl text-white font-mali_bold">
+                                    ₦{theData?.currentAmount?.toFixed(2)}
+                                </Text>)}
+                                <Pressable onPress={() => setOn(!theOn)} className="ml-3">
+                                    {theOn ? (<Icon as={EyeOff} className="stroke-white h-5 w-5"/>) :(<Icon as={Eye} className="stroke-white h-5 w-5"/>)}
+                                </Pressable>
+                            </HStack>
+                        </VStack>
+                    </ImageBackground>
+                    
+                </Card>
+
+                <VStack className="mx-4 p-4 border border-jarHeadBorder rounded-xl items-center mt-8">
                     <HStack className="items-center justify-between w-full px-6">
                         <Text className="text-base font-mail text-jarWrite text-wrap">
                             Want that special toy{'\n'}or game? Set a goal{'\n'}and let’s start saving{'\n'}together
