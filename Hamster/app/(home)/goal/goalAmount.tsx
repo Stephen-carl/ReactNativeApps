@@ -36,7 +36,12 @@ export default function GoalAmount() {
     }
     const handleSubmit = () => {
         if (!amount || clientError) return;
-        Example: router.push({ pathname: '/(home)/goal/goalTarget', params: { amount, goalName, currentAmount } });
+        // first check that the amount entered is not more than the current amount
+        if (Number(amount) > Number(currentAmount)) {
+            setClientError(`Goal amount cannot be more than the current amount in jar ₦${currentAmount}.`);
+            return;
+        }
+        router.push({ pathname: '/(home)/goal/goalTarget', params: { amount, goalName, currentAmount } });
     };
 
     return(

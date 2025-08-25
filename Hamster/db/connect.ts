@@ -89,6 +89,20 @@ export const initDB = async (): Promise<SQLite.SQLiteDatabase> => {
     );
   `);
 
+  await dbInstance.execAsync(`
+    CREATE TABLE IF NOT EXISTS goals (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    childId INTEGER,
+    item TEXT NOT NULL,
+    amount REAL NOT NULL,
+    target TEXT NOT NULL,
+    duration TEXT,
+    savedAmount REAL DEFAULT 0,
+    status TEXT DEFAULT 'ongoing',
+    FOREIGN KEY(childId) REFERENCES children(id)
+    );
+  `);
+
   console.log('Database initialized successfully');
 
   return dbInstance

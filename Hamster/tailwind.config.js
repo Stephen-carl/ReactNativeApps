@@ -35,6 +35,9 @@ module.exports = {
         jarAdd : "#AAF9CE",
         catergoryBorder : "#04D4F4",
         goalButtonText : "#1A2F38",
+        goalStatusBG: "#FDEAD8",
+        goalStatusStatus: "#027E92",
+        goalStatusText: "#FAC899",
         primary: {
           0: 'rgb(var(--color-primary-0)/<alpha-value>)',
           50: 'rgb(var(--color-primary-50)/<alpha-value>)',

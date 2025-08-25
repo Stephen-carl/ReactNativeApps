@@ -13,7 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function GoalTarget() {
     const { user } = useUserStore();
-    const { goalName, currentAmount, goalAmount } = useLocalSearchParams();
+    const { goalName, currentAmount, amount } = useLocalSearchParams();
     const [target, setTarget] = useState<string>('');
 
     const handleSelected = (item: string) => {
@@ -27,8 +27,8 @@ export default function GoalTarget() {
 
     const handleSubmit = () => {
         router.push({
-            pathname: "/(home)/goal/goalItem",
-            params: { goalName, currentAmount, goalTarget : target, goalAmount }
+            pathname: "/(home)/goal/goalDuration",
+            params: { goalName, currentAmount, goalTarget : target, amount }
         });
     }
 

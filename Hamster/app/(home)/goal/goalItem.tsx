@@ -32,7 +32,7 @@ export default function GoalItem() {
     const handleSubmit = () => {
         router.push({
             pathname: "/(home)/goal/goalAmount",
-            params: { goalName: text, currentAmount }
+            params: { goalName: text.toUpperCase(), currentAmount }
         });
     }
 
