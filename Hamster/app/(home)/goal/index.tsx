@@ -52,7 +52,7 @@ export default function GoalLayout() {
             {
                 childId: user?.id,
                 goalId: 0,
-                status: status
+                status: ''
             },
             {
                 onSuccess: (data) => {
@@ -65,7 +65,7 @@ export default function GoalLayout() {
                     }
                     setGoals(data);
                     // get the status count
-                    setStatusCount(data.length);
+                    // setStatusCount(data.length);
                 },
                 onError: (error) => {
                     console.error('Error fetching goals:', error);
@@ -74,6 +74,11 @@ export default function GoalLayout() {
             }
         )
     }
+
+    // filter now then get the length later
+    const ongoingGoals = goals.filter((g) => g.status === "ongoing");
+    const completedGoals = goals.filter((g) => g.status === "complete");
+    const displayedGoals = goalsStatus === "ongoing" ? ongoingGoals : completedGoals;
 
     // set the background colour and the text colour different when it is either ongoing or completed
     const handleStatusStyle = (status: string) => {
@@ -124,14 +129,14 @@ export default function GoalLayout() {
                     </Button>
                 </VStack>
 
-                <HStack className="justify-between mt-10 p-2 bg-goalStatusBG rounded-xl">
+                {/* <HStack className="justify-between mt-10 p-2 bg-goalStatusBG rounded-xl">
                     <Pressable onPress={() => {
                         getTheGoals('ongoing')
                         setGoalsStatus('ongoing');
                         }}>
                         <HStack space="xl" className={`${goalsStatus =='ongoing'? 'bg-globColour rounded-xl': ''} justify-between items-center px-4 py-2`}>
                             <Text className={`text-lg font-mali_semibold ${goalsStatus =='ongoing'? 'text-white': 'text-goalStatusText'}`}>Ongoing</Text>
-                            <Text className="text-xs font-mali text-white rounded-full bg-goalStatusStatus p-3">{statusCount}</Text>
+                            <Text className="text-xs font-mali text-white rounded-full bg-goalStatusStatus p-2">{statusCount}</Text>
                         </HStack>
                     </Pressable>
 
@@ -141,14 +146,61 @@ export default function GoalLayout() {
                         }}>
                         <HStack space="xl" className={`${goalsStatus =='ongoing'? '': 'bg-globColour rounded-xl'}  items-center px-4 py-2`}>
                             <Text className={`text-lg font-mali_semibold ${goalsStatus =='ongoing'? 'text-goalStatusText': 'text-white'}`}>Completed</Text>
-                            <Text className="text-sm font-mali text-white rounded-full bg-goalStatusStatus p-3">{statusCount}</Text>
+                            <Text className="text-sm font-mali text-white rounded-full bg-goalStatusStatus p-2">{statusCount}</Text>
                         </HStack>
                     </Pressable>
                     
+                </HStack> */}
+
+                <HStack className="justify-between mt-10 p-2 bg-goalStatusBG rounded-xl">
+                    <Pressable
+                        onPress={() => setGoalsStatus("ongoing")}
+                        className={`${
+                        goalsStatus === "ongoing" ? "bg-globColour rounded-xl" : ""
+                        } flex-1 mx-1`}
+                        >
+                        <HStack className="justify-center items-center py-2">
+                            <Text
+                                className={`text-lg font-mali_semibold ${
+                                goalsStatus === "ongoing"
+                                ? "text-white"
+                                : "text-goalStatusText"
+                                }`}
+                            >
+                            Ongoing
+                            </Text>
+                            <Text className="ml-2 text-xs font-mali text-white rounded-full bg-goalStatusStatus px-2 py-1">
+                            {ongoingGoals.length}
+                            </Text>
+                        </HStack>
+                    </Pressable>
+
+
+                    <Pressable
+                        onPress={() => setGoalsStatus("complete")}
+                        className={`${
+                        goalsStatus === "complete" ? "bg-globColour rounded-xl" : ""
+                        } flex-1 mx-1`}
+                        >
+                        <HStack className="justify-center items-center py-2">
+                            <Text
+                            className={`text-lg font-mali_semibold ${
+                            goalsStatus === "complete"
+                            ? "text-white"
+                            : "text-goalStatusText"
+                            }`}
+                            >
+                            Completed
+                            </Text>
+                            <Text className="ml-2 text-xs font-mali text-white rounded-full bg-goalStatusStatus px-2 py-1">
+                            {completedGoals.length}
+                            </Text>
+                        </HStack>
+                    </Pressable>
                 </HStack>
 
                 <FlatList
-                data={goals}
+                data={displayedGoals}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => <GoalCom goals={item}/>}
                 className="mt-6"

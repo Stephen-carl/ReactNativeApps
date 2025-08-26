@@ -8,7 +8,7 @@ import { VStack } from "./ui/vstack";
 export default function GoalCom({goals} : {goals : any}) {
     // i need to calculate the percentage of the goal
     const percentage = (goals.savedAmount / goals.amount) * 100;
-    const progressBarWidth = `${percentage}%`;
+    const progressBarWidth = `${percentage.toFixed(2)}%`;
 
     // i need to get the number of days left to achieve the goal
     const today = new Date();
@@ -30,10 +30,17 @@ daysLeftText = `${daysLeft} days left`;
     
     // go to the goal add passinf the goal id
     const handlePress = () => {
-        router.push({
-            pathname: "/(home)/goal/goalAdd",
-            params: { goalId: goals.id }
-        })
+        if (goals.status == 'ongoing') {
+            // only allow if the goal is ongoing
+            router.push({
+                pathname: "/(home)/goal/goalAdd",
+                params: { goalId: goals.id }
+            })
+        } else{
+            // do nothing
+            return;
+        }
+        
     }
 
     return (

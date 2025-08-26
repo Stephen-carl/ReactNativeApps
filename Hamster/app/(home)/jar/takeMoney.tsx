@@ -62,10 +62,10 @@ export default function TakeMoney() {
                     <InputField 
                     className={`text-base font-mail border-2 rounded-xl ${!theValue ? 'border-gray-300' : 'border-globColour'}`} 
                     placeholder="5"
-                    value={theValue.trim()}
+                    value={theValue}
                     keyboardType="decimal-pad"
                     onChangeText={(text)=>{
-                        handleInputChange(text.trim())
+                        handleInputChange(text)
                     }}
                     />
                 </Input>
@@ -87,7 +87,7 @@ export default function TakeMoney() {
                             router.push({
                             pathname: '/jar/takeOutItem',
                             params: {
-                                amount: theValue,
+                                amount: theValue.trim(),
                                 initialAmount: initialAmount
                             },
                             

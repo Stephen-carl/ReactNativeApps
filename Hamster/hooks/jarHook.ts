@@ -159,11 +159,11 @@ export const insertTakeOutItem = (itemName:string, categoryName:string, childId:
             }
             
             // update the jar
-            const theUpdate = await updateJar(childId, currentAmount, initialAmount, ".")
-            if (!theUpdate) {
-                reject('Error updating jar')
-            }
-            console.log(theUpdate)
+            // const theUpdate = await updateJar(childId, currentAmount, initialAmount, ".")
+            // if (!theUpdate) {
+            //     reject('Error updating jar')
+            // }
+            // console.log(theUpdate)
             resolve('Take out item inserted successfully. Jar Updated')
         } catch (error) {
             reject(error)
@@ -192,15 +192,22 @@ export const insertTransaction = (childId:number, amount:number, reason:string, 
             if (theResult.changes === 0) {
                 reject('Error inserting transaction')
             }
+            const theJar = await getJar(childId)
+                if (!theJar) {
+                    reject('Jar not found')
+                }
 
             // then update the jar if the reason it add and not take
             if (reason === 'add') {
                 // first get the current amount in jar
-                const theJar = await getJar(childId)
-                if (!theJar) {
-                    reject('Jar not found')
-                }
+                
                 const newCurrentAmount = Number(theJar.currentAmount) + Number(amount)
+                const theUpdate = await updateJar(childId, newCurrentAmount, theJar.currentAmount, date)
+                if (!theUpdate) {
+                    reject('Error updating jar')
+                }
+            } else if(reason === 'take') {
+                const newCurrentAmount = Number(theJar.currentAmount) - Number(amount)
                 const theUpdate = await updateJar(childId, newCurrentAmount, theJar.currentAmount, date)
                 if (!theUpdate) {
                     reject('Error updating jar')

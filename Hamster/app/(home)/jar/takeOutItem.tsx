@@ -44,7 +44,7 @@ export default function TakeOutItemScreen() {
         const theResult =(parseFloat(initialAmount as string) - parseFloat(amount as string))
         console.log(theResult);
         // insert into the jar item
-        const itemName = theValue
+        const itemName = theValue.trim()
         const categoryName = selected
         const childId = user?.id
         const childName = user?.name
@@ -98,9 +98,9 @@ export default function TakeOutItemScreen() {
                     <InputField 
                     className={`text-base font-mail border-2 rounded-xl ${!theValue ? 'border-gray-300' : 'border-globColour'}`} 
                     placeholder="Sweet....."
-                    value={theValue.trim()}
+                    value={theValue}
                     onChangeText={(text)=>{
-                        setTheValue(text.trim())
+                        setTheValue(text)
                     }}
                     />
                 </Input>
