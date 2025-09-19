@@ -103,7 +103,7 @@ export default function GoalAdd() {
                             </ButtonText>
                         </Button>
                     </HStack>
-
+{/* C:\Users\stephen.okafor\OneDrive - CWG PLC\Documents\Personal\ReactNativeApps\Hamster\assets\images\hamLogo.png */}
                     <VStack space="sm" className="items-center my-9">
                         <Text className="text-2xl text-getStarted font-mali_bold">
                             ₦ {Number(goals?.amount.toFixed(2)) - Number(goals?.savedAmount.toFixed(2))}

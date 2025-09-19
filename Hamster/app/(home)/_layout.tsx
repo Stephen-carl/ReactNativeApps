@@ -61,7 +61,7 @@ export default function HomeRootLayout() {
                             />
                         }}
                     />
-                    <Tabs.Screen
+                    {/* <Tabs.Screen
                         name="profile"
                         options={{
                             title: "Profile",
@@ -70,7 +70,7 @@ export default function HomeRootLayout() {
                             style={{tintColor: focused ? "#F69439" : "#ADAC9F"}}
                             />
                         }}
-                    />
+                    /> */}
                 </Tabs>
             </GluestackUIProvider>
         </QueryClientProvider>

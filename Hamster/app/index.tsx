@@ -7,6 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import HomeLayout from "./(home)/home";
 import { useEffect } from "react";
 import { initDB } from "@/db/connect";
+import { Image } from "@/components/ui/image";
 
 export default function WelcomeScreen() {
     const { isLoggedIn } = useUserStore()
@@ -26,12 +27,13 @@ export default function WelcomeScreen() {
     },[isLoggedIn])
     
     return (
-        <SafeAreaView>
-            <Text className="justify-center items-center w-full p-4">Welcome To Hamster</Text>
-            <Button onPress={()=> router.navigate('/(walkthrough)/welcome')}
-                className="justify-center items-center m-4 bg-gray-600">
-                <ButtonText>Get Started</ButtonText>
-            </Button>
+        <SafeAreaView className="flex-1 bg-globColour justify-center items-center">
+            <Image
+            source={require('@/assets/images/splashScreenLogo.png')}
+            className="w-full mb-10"
+            alt='Hamster Logo'
+            resizeMode="contain"
+            />
         </SafeAreaView>
     )
 }
