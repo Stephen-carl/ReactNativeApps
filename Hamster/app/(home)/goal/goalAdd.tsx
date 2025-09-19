@@ -26,10 +26,10 @@ export default function GoalAdd() {
 
     // to display the goal level pending on the amount put in the goal
     const itemImages : string | any = {
-        'one': require('@/assets/images/category/candy.png'),
-        'two': require('@/assets/images/category/clothes.png'),
-        'three': require('@/assets/images/category/children.png'),
-        'four': require('@/assets/images/category/gift_box.png')
+        'one': require('@/assets/images/goal/goalprogress1.png'),
+        'two': require('@/assets/images/goal/goalprogress1.png'),
+        'three': require('@/assets/images/goal/goalprogress1.png'),
+        'four': require('@/assets/images/goal/goalprogress1.png')
     }
 
     // Fetch goals when the component mounts
@@ -86,7 +86,7 @@ export default function GoalAdd() {
                             <Pressable>
                                 <ChevronLeft size={24} className=" w-6 h-6" onPress={() => router.back()}/>
                             </Pressable>
-                            <Text className="text-xl font-mali_semibold text-getStarted">{goals?.item} Duration</Text>
+                            <Text className="text-xl font-mali_semibold text-getStarted">{goals?.item}</Text>
                         </HStack>
 
                         <Button variant="outline" 
@@ -115,7 +115,7 @@ export default function GoalAdd() {
 
                     <Image
                     source={imageUse ? imageUse : require('@/assets/images/category/candy.png')}
-                    className="w-32 h-32 mt-10 self-center"
+                    className="w-fit h-fit mt-6 "
                     alt="Goal Image"
                     />
                     

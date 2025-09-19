@@ -5,6 +5,7 @@ import { Pressable } from "@/components/ui/pressable";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
 import { useUserStore } from "@/store/userStore";
+import { showSuccessAlert } from "@/utils/alert";
 import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -49,7 +50,7 @@ export default function LearnHomeLayout() {
                             
                         </Pressable>
 
-                        <Pressable>
+                        <Pressable onPress={() => showSuccessAlert('Coming Soon!!!','This feature is coming soon! Hang on tight!!!')}>
                             <VStack space="sm" className="items-center justify-center">
                                 <Image
                                 source={require('@/assets/images/learn/videoicon.png')}

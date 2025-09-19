@@ -8,29 +8,29 @@ import { router } from "expo-router";
 import { ChevronLeft } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function NeedWantLayout() {
-    return (
+export default function WhyLesson3() {
+    return(
         <SafeAreaView className="flex-1 bg-white">
             <VStack className="flex-1 max-w-full min-h-full m-4 justify-between">
                 <VStack>
                     <HStack space="lg" className=" items-center">
-                        <Pressable>
-                            <ChevronLeft size={24} className=" w-6 h-6" onPress={() => router.back()}/>
-                        </Pressable>
-                        <Text className="text-2xl font-mali_semibold text-getStarted">Lessons</Text>
+                    <Pressable>
+                        <ChevronLeft size={24} className=" w-6 h-6" onPress={() => router.back()}/>
+                    </Pressable>
+                    <Text className="text-2xl font-mali_semibold text-getStarted">Lessons</Text>
                     </HStack>
 
-                    <Text className="text-xl font-mali_semibold text-getStarted mt-11">Needs and Want</Text>
+                    <Text className="text-xl font-mali_semibold text-getStarted mt-11">Why save Money</Text>
 
                     <VStack space="4xl" className="items-center justify-center">
                         <Image
-                        source={require('@/assets/images/learn/lesson/les1.png')}
+                        source={require('@/assets/images/learn/lesson/saveles3.png')}
                         className="h-36 w-36 mt-20"
                         alt="lesson"
-                        resizeMode="cover"
+                        resizeMode="contain"
                         />
                         <Text className="text-lg font-mali_semibold text-getStarted mt-14 text-center">
-                            Needs are things we must have to be safe and healthy.
+                            We save to buy bigger things we can’t get right away.
                         </Text>
                     </VStack>
                 </VStack>
@@ -39,10 +39,11 @@ export default function NeedWantLayout() {
                     style={{ width: '100%'}} 
                     size='xl' 
                     className="bg-globColour rounded-lg"
-                    onPress={() => router.push('/(home)/learn/lesson/needwant/lesson2')}
+                    onPress={() => router.push('/(home)/learn/lesson/why/lesson4')}
                     >
                     <ButtonText className="text-white font-mail text-lg">Next</ButtonText>
                 </Button>
+                
             </VStack>
         </SafeAreaView>
     )

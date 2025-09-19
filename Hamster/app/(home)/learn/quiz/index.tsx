@@ -23,12 +23,12 @@ export default function QuizLayout(){
                     <Text className="text-xl font-mali_semibold text-getStarted ml-6 my-4">History of Money</Text>
                 </Pressable>
                 <Pressable 
-                onPress={() => router.push('/(home)/learn/lesson/why')}
+                onPress={() => router.push('/(home)/learn/quiz/why')}
                 className="border rounded-lg mt-6 py-5 ">
                     <Text className="text-xl font-mali_semibold text-getStarted ml-6">Why Save Money?</Text>
                 </Pressable>
                 <Pressable 
-                onPress={() => router.push('/(home)/learn/lesson/needwant')}
+                onPress={() => router.push('/(home)/learn/quiz/needwant')}
                 className="border rounded-lg mt-6 py-5 ">
                     <Text className="text-xl font-mali_semibold text-getStarted ml-6">Needs & Wants</Text>
                 </Pressable>
