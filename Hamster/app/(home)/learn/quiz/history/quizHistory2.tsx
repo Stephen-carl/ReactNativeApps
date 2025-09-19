@@ -10,11 +10,11 @@ import { ChevronLeft } from "lucide-react-native";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function QuizHistory() {
+export default function QuizHistoryTwo() {
     const [selected, setSelected] = useState<string|null>(null)
     const [text, setText] = useState<string>('')
 
-    const correctAnswer = 'money';
+    const correctAnswer = 'metal';
 
     // when selected
      const handleSelected = (item: string) => {
@@ -26,13 +26,13 @@ export default function QuizHistory() {
         if (text !== correctAnswer){
             showSuccessAlert(
                 'Incorrect Answer 😞',
-                `The right answer is ${correctAnswer.toUpperCase()}. You use money to buy things like sweets 🍬 or shoes 🥾.`
+                `The right answer is ${correctAnswer.toUpperCase()}. A coin 🪙 is made of ${correctAnswer} like gold or silver which makes it valuable.`
             )
         } else {
             showSuccessAlert(
-                "That's right!! 🥳🎉",`You use ${correctAnswer} to buy things like sweets 🍬 or shoes 🥾.`
+                "That's right!! 🥳🎉",`A coin 🪙 is made of ${correctAnswer} like gold or silver which makes it valuable.`
             )
-            router.push('/(home)/learn/quiz/history/quizHistory2')
+            router.push('/(home)/learn/quiz/history/quizHistory3')
         }
     }
 
@@ -46,7 +46,7 @@ export default function QuizHistory() {
                     </Pressable>
                     <HStack className="items-center justify-center flex-1 px-5">
                         <Image
-                        source={require('@/assets/images/progressBar.png')}
+                        source={require('@/assets/images/progressBar2.png')}
                         className="h-3 w-full "
                         alt="fluffy"
                         resizeMode="cover"
@@ -56,25 +56,25 @@ export default function QuizHistory() {
 
 
                 <Text className="text-2xl text-getStarted font-mali_semibold my-11">
-                    What do we use to buy things?
+                    What is a coin made of?
                 </Text>
 
                 <Pressable 
-                    onPress={() => handleSelected('shoe')}
-                    className={`border rounded-lg items-start ${text == 'shoe' ? 'border-globColour' : null}`}>
-                    <Text className="text-xl font-mali_semibold text-getStarted ml-6 my-4">Shoe</Text>
+                    onPress={() => handleSelected('plastic')}
+                    className={`border rounded-lg items-start ${text == 'plastic' ? 'border-globColour' : null}`}>
+                    <Text className="text-xl font-mali_semibold text-getStarted ml-6 my-4">Plastic</Text>
                 </Pressable>
 
                 <Pressable 
-                    onPress={() => handleSelected('sweets')}
-                    className={`border rounded-lg mt-6 py-4 ${text == 'sweets' ? 'border-globColour' : null}`}>
-                    <Text className="text-xl font-mali_semibold text-getStarted ml-6">Sweets</Text>
+                    onPress={() => handleSelected('metal')}
+                    className={`border rounded-lg mt-6 py-4 ${text == 'metal' ? 'border-globColour' : null}`}>
+                    <Text className="text-xl font-mali_semibold text-getStarted ml-6">Metal</Text>
                 </Pressable>
 
                 <Pressable 
-                    onPress={() => handleSelected('money')}
-                    className={`border rounded-lg mt-6 py-4 ${text == 'money' ? 'border-globColour' : null}`}>
-                    <Text className="text-xl font-mali_semibold text-getStarted ml-6">Money</Text>
+                    onPress={() => handleSelected('paper')}
+                    className={`border rounded-lg mt-6 py-4 ${text == 'paper' ? 'border-globColour' : null}`}>
+                    <Text className="text-xl font-mali_semibold text-getStarted ml-6">Paper</Text>
                 </Pressable>
 
                 </VStack>

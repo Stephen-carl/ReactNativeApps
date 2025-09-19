@@ -67,7 +67,6 @@ export default function JarScreen() {
                 <Text className="text-2xl font-mali_semibold text-getStarted mt-2 p-4">My Jar</Text>
 
                 <VStack className="m-4">
-                    <Card className="">
                         <ImageBackground 
                         source={require('@/assets/images/balanceBG.png')}
                         className="w-full h-40 items-center justify-center"
@@ -91,7 +90,6 @@ export default function JarScreen() {
                             </VStack>
                         </ImageBackground>
                         
-                    </Card>
 
                     <HStack className="justify-evenly mt-3">
                         <Button 

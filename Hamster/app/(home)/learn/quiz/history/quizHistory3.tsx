@@ -10,11 +10,11 @@ import { ChevronLeft } from "lucide-react-native";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function QuizHistory() {
+export default function QuizHistoryThree() {
     const [selected, setSelected] = useState<string|null>(null)
     const [text, setText] = useState<string>('')
 
-    const correctAnswer = 'money';
+    const correctAnswer = 'To have enough for things you want later';
 
     // when selected
      const handleSelected = (item: string) => {
@@ -26,13 +26,13 @@ export default function QuizHistory() {
         if (text !== correctAnswer){
             showSuccessAlert(
                 'Incorrect Answer 😞',
-                `The right answer is ${correctAnswer.toUpperCase()}. You use money to buy things like sweets 🍬 or shoes 🥾.`
+                `The right answer is ${correctAnswer}.`
             )
         } else {
             showSuccessAlert(
-                "That's right!! 🥳🎉",`You use ${correctAnswer} to buy things like sweets 🍬 or shoes 🥾.`
+                "That's right!! 🥳🎉",`${correctAnswer} is the reason why you have to save.`
             )
-            router.push('/(home)/learn/quiz/history/quizHistory2')
+            router.replace('/(home)/learn/lesson/learncompletion')
         }
     }
 
@@ -46,7 +46,7 @@ export default function QuizHistory() {
                     </Pressable>
                     <HStack className="items-center justify-center flex-1 px-5">
                         <Image
-                        source={require('@/assets/images/progressBar.png')}
+                        source={require('@/assets/images/progressBar3.png')}
                         className="h-3 w-full "
                         alt="fluffy"
                         resizeMode="cover"
@@ -56,25 +56,31 @@ export default function QuizHistory() {
 
 
                 <Text className="text-2xl text-getStarted font-mali_semibold my-11">
-                    What do we use to buy things?
+                    Why should you save money?
                 </Text>
 
                 <Pressable 
-                    onPress={() => handleSelected('shoe')}
-                    className={`border rounded-lg items-start ${text == 'shoe' ? 'border-globColour' : null}`}>
-                    <Text className="text-xl font-mali_semibold text-getStarted ml-6 my-4">Shoe</Text>
+                    onPress={() => handleSelected('To buy everything now')}
+                    className={`border rounded-lg items-start ${text == 'To buy everything now' ? 'border-globColour' : null}`}>
+                    <Text className="text-xl font-mali_semibold text-getStarted ml-6 my-4">
+                        To buy everything now
+                    </Text>
                 </Pressable>
 
                 <Pressable 
-                    onPress={() => handleSelected('sweets')}
-                    className={`border rounded-lg mt-6 py-4 ${text == 'sweets' ? 'border-globColour' : null}`}>
-                    <Text className="text-xl font-mali_semibold text-getStarted ml-6">Sweets</Text>
+                    onPress={() => handleSelected('To have enough for things you want later')}
+                    className={`border rounded-lg mt-6 py-4 ${text == 'To have enough for things you want later' ? 'border-globColour' : null}`}>
+                    <Text className="text-xl font-mali_semibold text-getStarted ml-6">
+                        To have enough for things you want later
+                    </Text>
                 </Pressable>
 
                 <Pressable 
-                    onPress={() => handleSelected('money')}
-                    className={`border rounded-lg mt-6 py-4 ${text == 'money' ? 'border-globColour' : null}`}>
-                    <Text className="text-xl font-mali_semibold text-getStarted ml-6">Money</Text>
+                    onPress={() => handleSelected('To give it all away')}
+                    className={`border rounded-lg mt-6 py-4 ${text == 'To give it all away' ? 'border-globColour' : null}`}>
+                    <Text className="text-xl font-mali_semibold text-getStarted ml-6">
+                        To give it all away
+                    </Text>
                 </Pressable>
 
                 </VStack>

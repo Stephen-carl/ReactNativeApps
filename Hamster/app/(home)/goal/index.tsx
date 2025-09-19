@@ -89,7 +89,7 @@ export default function GoalLayout() {
         <SafeAreaView className="flex-1 bg-white">
             <VStack className="flex-1 m-4 max-w-full min-h-full">
                 <Text className="text-2xl font-mali_semibold text-getStarted mt-2 ml-2">My Goals</Text>
-                <Card className="">
+                
                     <ImageBackground 
                     source={require('@/assets/images/balanceBG.png')}
                     className="w-full h-40  items-center justify-center"
@@ -113,8 +113,6 @@ export default function GoalLayout() {
                         </VStack>
                     </ImageBackground>
                                     
-                                </Card>
-
                 <VStack className="p-4 items-center">
                     <Button 
                         size="lg" 

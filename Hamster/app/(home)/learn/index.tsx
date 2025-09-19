@@ -6,7 +6,6 @@ import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
 import { useUserStore } from "@/store/userStore";
 import { router } from "expo-router";
-import { PercentDiamond } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LearnHomeLayout() {
@@ -30,14 +29,14 @@ export default function LearnHomeLayout() {
                                 resizeMode="cover"
                                 />
                                 <Text className="text-base font-mali_semibold text-getStarted">Lesson</Text>
-                            </VStack>
-                            
+                            </VStack>   
                         </Pressable>
                         
                     </HStack>
 
                     <HStack className="items-center justify-between mt-6 px-6">
-                        <Pressable>
+                        <Pressable
+                        onPress={() => router.push('/(home)/learn/quiz')}>
                             <VStack space="sm" className="items-center justify-center">
                                 <Image
                                 source={require('@/assets/images/learn/quizbulb.png')}
@@ -54,7 +53,7 @@ export default function LearnHomeLayout() {
                             <VStack space="sm" className="items-center justify-center">
                                 <Image
                                 source={require('@/assets/images/learn/videoicon.png')}
-                                className="h-36 w-28"
+                                className="h-28 w-28"
                                 alt="lesson"
                                 resizeMode="cover"
                                 />
@@ -66,7 +65,7 @@ export default function LearnHomeLayout() {
 
                 </VStack>
 
-                 <FluffyTutor message={`${user?.name}, welcome to Learning section. Would you like to learn of take a quiz?.`} />
+                 <FluffyTutor message={`${user?.name}, welcome to Learning section. Would you like to learn or take a quiz?.`} />
 
             </VStack>
         </SafeAreaView>

@@ -24,12 +24,12 @@ export default function LessonLayout() {
                 </Pressable>
                 <Pressable 
                 onPress={() => router.push('/(home)/learn/lesson/why')}
-                className="border rounded-lg mt-6 py-5 px-8">
+                className="border rounded-lg mt-6 py-4">
                     <Text className="text-xl font-mali_semibold text-getStarted ml-6">Why Save Money?</Text>
                 </Pressable>
                 <Pressable 
                 onPress={() => router.push('/(home)/learn/lesson/needwant')}
-                className="border rounded-lg mt-6 py-5 px-8">
+                className="border rounded-lg mt-6 py-4">
                     <Text className="text-xl font-mali_semibold text-getStarted ml-6">Needs & Wants</Text>
                 </Pressable>
             </VStack>
